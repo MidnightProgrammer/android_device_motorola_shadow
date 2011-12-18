@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+** Copyright 2009, The Android Open Source Project
+**
+** Licensed under the Apache License, Version 2.0 (the "License"); 
+** you may not use this file except in compliance with the License. 
+** You may obtain a copy of the License at 
+**
+**     http://www.apache.org/licenses/LICENSE-2.0 
+**
+** Unless required by applicable law or agreed to in writing, software 
+** distributed under the License is distributed on an "AS IS" BASIS, 
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+** See the License for the specific language governing permissions and 
+** limitations under the License.
+*/
+-->
+
+<!-- These resources are around just to allow their values to be customized
+     for different hardware and product builds. -->
+<resources>
+    <!-- Flag indicating whether the surface flinger is inefficient
+         at performing a blur.  Used by parts of the UI to turn off
+         the blur effect where it isn't worth the performance hit. -->
+    <bool name="config_sf_slowBlur">false</bool>
+    
+    <!-- The duration (in milliseconds) of a short animation. -->
+    <integer name="config_shortAnimTime">150</integer>
+    
+    <!-- The duration (in milliseconds) of a medium-length animation. -->
+    <integer name="config_mediumAnimTime">300</integer>
+    
+    <!-- The duration (in milliseconds) of a long animation. -->
+    <integer name="config_longAnimTime">400</integer>
+
+    <!-- XXXXX NOTE THE FOLLOWING RESOURCES USE THE WRONG NAMING CONVENTION.
+         Please don't copy them, copy anything else. -->
+
+    <!-- This string array should be overridden by the device to present a list of network
+         attributes.  This is used by the connectivity manager to decide which networks can coexist
+         based on the hardware -->
+    <!-- An Array of "[Connection name],[ConnectivityManager connection type],
+         [associated radio-type],[priority]  -->
+    <string-array translatable="false" name="networkAttributes">
+        <item>"wifi,1,1,1,-1,true"</item>
+        <item>"mobile,0,0,0,-1,true"</item>
+        <item>"mobile_mms,2,0,2,60000,true"</item>
+        <item>"mobile_dun,4,0,4,60000,true"</item>
+        <item>"mobile_hipri,5,0,3,60000,true"</item>
+        <item>"mobile_fota,10,0,2,60000,true"</item><!--
+        <item>"mobile_agps,20,0,2,60000,true"</item>
+        <item>"mobile_oem1,21,0,2,60000,true"</item>
+        <item>"mobile_oem2,22,0,2,60000,true"</item>
+        <item>"mobile_oem3,23,0,2,60000,true"</item>-->
+    </string-array>
+
+    <!-- Flag indicating whether the keyguard should be bypassed when
+         the slider is open.  This can be set or unset depending how easily
+         the slider can be opened (for example, in a pocket or purse). -->
+    <bool name="config_bypass_keyguard_if_slider_open">false</bool>
+    
+    <!-- Flag indicating whether the we should enable the automatic brightness in Settings.
+         Software implementation will be used if config_hardware_auto_brightness_available is not set -->
+    <bool name="config_automatic_brightness_available">true</bool>
+    
+    <!-- XXXXXX END OF RESOURCES USING WRONG NAMING CONVENTION -->
+
+    <!-- The number of degrees to rotate the display when the device is in a desk dock.
+         A value of -1 means no change in orientation by default. -->
+    <integer name="config_deskDockRotation">90</integer>
+
+    <!-- Control whether being in the desk dock (and powered) always
+         keeps the screen on.  By default it stays on when plugged in to
+         AC.  0 will not keep it on; or together 1 to stay on when plugged
+         in to AC and 2 to stay on when plugged in to USB.  (So 3 for both.) -->
+    <integer name="config_deskDockKeepsScreenOn">0</integer>
+
+    <!-- Vibrator pattern for feedback about a long screen/key press -->
+    <integer-array name="config_longPressVibePattern">
+        <item>0</item>
+        <item>18</item>
+    </integer-array>
+    
+    <!-- Vibrator pattern for feedback about touching a virtual key -->
+    <integer-array name="config_virtualKeyVibePattern">
+        <item>0</item>
+        <item>6</item>
+    </integer-array>
+
+    <!-- Vibrator pattern for a very short but reliable vibration for soft keyboard tap -->
+    <integer-array name="config_keyboardTapVibePattern">
+        <item>0</item>
+        <item>6</item>
+    </integer-array>
+
+    <!-- Vibrator pattern for feedback about booting with safe mode disabled -->
+    <integer-array name="config_safeModeDisabledVibePattern">
+        <item>0</item>
+        <item>18</item>
+    </integer-array>
+
+    <!-- Vibrator pattern for feedback about booting with safe mode disabled -->
+    <integer-array name="config_safeModeEnabledVibePattern">
+        <item>0</item>
+        <item>18</item>
+        <item>500</item>
+        <item>600</item>
+    </integer-array>
+
+    <!-- Vibrator pattern for feedback about hitting a scroll barrier -->
+    <integer-array name="config_scrollBarrierVibePattern">
+        <item>0</item>
+        <item>12</item>
+        <item>12</item>
+        <item>12</item>
+    </integer-array>
+
+    <!-- Allow the menu hard key to be disabled in LockScreen on some devices -->
+    <bool name="config_disableMenuKeyInLockScreen">true</bool>
+
+    <!-- Array of light sensor LUX values to define our levels for auto backlight brightness support.
+         The N entries of this array define N + 1 zones as follows:
+
+         Zone 0:        0 <= LUX < array[0]
+         Zone 1:        array[0] <= LUX < array[1]
+         ...
+         Zone N:        array[N - 1] <= LUX < array[N]
+         Zone N + 1:    array[N] <= LUX < infinity
+
+         Must be overridden in platform specific overlays -->
+    <integer-array name="config_autoBrightnessLevels">
+        <item>100</item>
+        <item>3000</item>
+        <item>8000</item>
+        <item>8000</item>
+    </integer-array>
+
+    <!-- Array of output values for LCD backlight corresponding to the LUX values
+         in the config_autoBrightnessLevels array.  This array should have size one greater
+         than the size of the config_autoBrightnessLevels array.
+         This must be overridden in platform specific overlays -->
+    <integer-array name="config_autoBrightnessLcdBacklightValues">
+        <item>42</item>
+        <item>96</item>
+        <item>208</item>
+        <item>246</item>
+        <item>246</item>
+    </integer-array>
+
+    <!-- Array of output values for button backlight corresponding to the LUX values
+         in the config_autoBrightnessLevels array.  This array should have size one greater
+         than the size of the config_autoBrightnessLevels array.
+         This must be overridden in platform specific overlays -->
+    <integer-array name="config_autoBrightnessButtonBacklightValues">
+        <item>255</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+    </integer-array>
+
+    <!-- Array of output values for keyboard backlight corresponding to the LUX values
+         in the config_autoBrightnessLevels array.  This array should have size one greater
+         than the size of the config_autoBrightnessLevels array.
+         This must be overridden in platform specific overlays -->
+    <integer-array name="config_autoBrightnessKeyboardBacklightValues">
+        <item>255</item>
+        <item>255</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+    </integer-array>
+
+    <!-- Amount of time it takes for the light sensor to warm up in milliseconds.
+         For this time after the screen turns on, the Power Manager
+         will not debounce light sensor readings -->
+    <integer name="config_lightSensorWarmupTime">2000</integer>
+
+    <!-- Component name of the service providing network location support. -->
+    <string name="config_networkLocationProvider">com.google.android.location.NetworkLocationProvider</string>
+
+    <!-- Component name of the service providing geocoder API support. -->
+    <string name="config_geocodeProvider">com.google.android.location.GeocodeProvider</string>
+
+    <!-- The default iface on which to monitor data use -->
+    <string name="config_datause_iface">ppp0</string>
+    <!--this may be needed instead:
+    <string name="config_datause_iface">rmnet0</string>-->
+
+    <bool name="config_animateScreenLights">false</bool>
+
+</resources>
